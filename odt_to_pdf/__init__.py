@@ -1,3 +1,6 @@
+"""Celery task to generate a PDF from a LibreOffice document (mostly ODT)."""
+__version__ = "1.0"
+
 from logging import getLogger
 from typing import List
 from celery import shared_task
