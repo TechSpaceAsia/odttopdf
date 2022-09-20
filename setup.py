@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='odt_to_pdf',
-    version='1.0beta',
+    version='1.0.1',
     packages=['odt_to_pdf',],
     license='GNU General Public License v2 or later (GPLv2+)',
     long_description=open('README.txt').read(),

@@ -1,10 +1,28 @@
-OdtToPdfCelery
---------------
+odt_to_pdf
+==========
 
 A Celery shared task to transform an odt file (or its UTF8-decoded representation) to PDF
 
+Installation
+------------
+
+`pip install odt_to_pdf`
+
+Usage
+-----
+
+### Creating task
+
+See `examples/consumer/main.py`
+
 Worker
 ======
+
+The package works with a Celery worker which can be run directly `celery -A worker worker -Q odt_to_pdf -l INFO`
+
+However this requires `libreoffice` to be installed.
+
+It is therefore advisable to run the worker in Docker using this image: techspaceasia/odt_to_pdf:1.0.0
 
 The worker needs to be run in an environment which has access to
 - the Celery broker
