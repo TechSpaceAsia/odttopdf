@@ -10,9 +10,9 @@ def string_to_file(utf8_decoded: str) -> _TemporaryFileWrapper:
     temp_source_file.write(as_ascii)
   return temp_source_file
 
-def file_to_string(file: _TemporaryFileWrapper) -> str:
+def file_to_string(file_path: str) -> str:
   # Re-encode to bytes
-  with open(file, 'rb') as f:
+  with open(file_path, 'rb') as f:
     as_bytes = f.read()
   as_base64 = binascii.b2a_base64(as_bytes)
   return as_base64.decode('utf-8')
