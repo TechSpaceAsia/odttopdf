@@ -1,5 +1,5 @@
 from celery import Celery
-import odttopdf
+import odt_to_pdf
 from os import getenv
 import os
 

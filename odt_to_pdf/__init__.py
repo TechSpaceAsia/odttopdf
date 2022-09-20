@@ -3,7 +3,7 @@ from typing import List
 from celery import shared_task
 import subprocess
 from os import getenv
-from odttopdf.conversion import file_to_string, string_to_file
+from odt_to_pdf.conversion import file_to_string, string_to_file
 from tempfile import mkdtemp
 import re
 from pathlib import Path
@@ -38,16 +38,21 @@ def convert_odt_to_pdf(utf8_decoded: str='', source_file_path: str='', output_di
   else:
     LOGGER.info('Output of PDF conversion command %s', output)
 
-  # Libreoffice keeps the same name
-  pdf_filename = re.sub(r"\.odt$", ".pdf", temp_source_file.name)
+  odt_path = Path(temp_source_file.name)
+  odt_name = odt_path.name
+  # Libreoffice keeps the same name just changes the 
+  pdf_filename = re.sub(r"\.odt$", ".pdf", odt_name)
   LOGGER.info('PDF file %s', pdf_filename)
 
   pdf_file_path = Path(output_directory) / pdf_filename
   LOGGER.info('PDF path %s', pdf_file_path)
 
+  as_string = file_to_string(pdf_file_path)
   # Clean up
   if not keep_odt:
-    temp_source_file.delete()
+    odt_path.unlink()
+  if not keep_pdf:
+    pdf_file_path.unlink()
 
-  return file_to_string(pdf_file_path)  
+  return as_string
   

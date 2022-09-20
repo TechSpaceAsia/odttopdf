@@ -1,7 +1,0 @@
-README.txt
-setup.py
-OdtToPdfCelery.egg-info/PKG-INFO
-OdtToPdfCelery.egg-info/SOURCES.txt
-OdtToPdfCelery.egg-info/dependency_links.txt
-OdtToPdfCelery.egg-info/top_level.txt
-odttopdf/__init__.py

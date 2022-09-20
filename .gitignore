@@ -2,4 +2,4 @@ dist
 venv
 **/__pycache__
 *_local.py
-.egg-info
+*.egg-info

@@ -1,12 +1,13 @@
 from tempfile import NamedTemporaryFile, _TemporaryFileWrapper
 import binascii
+from typing import Literal
 
 
-def string_to_file(utf8_decoded: str) -> _TemporaryFileWrapper:
+def string_to_file(utf8_decoded: str, file_type: Literal['odt', 'pdf']='odt') -> _TemporaryFileWrapper:
   # Re-encode to bytes
   as_bytes = utf8_decoded.encode('utf-8')
   as_ascii = binascii.a2b_base64(as_bytes)
-  with NamedTemporaryFile('wb', suffix='.odt', delete=False) as temp_source_file:
+  with NamedTemporaryFile('wb', suffix=f'.{file_type}', delete=False) as temp_source_file:
     temp_source_file.write(as_ascii)
   return temp_source_file
 
